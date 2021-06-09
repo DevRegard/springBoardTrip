@@ -24,7 +24,7 @@ This is a second project of my Academy team collaboration, using Spring MVC
 
 To run this project, you should create a database calld "trip", and import trip.sql into it.
 
-I have developed backend bulletin boards such as member registration and login, notices, frequently asked questions, Q&A, admin page, and secret posts.
+I have developed backend bulletin boards such as member registration and login, notices, FAQ, Q&A, admin page, and secret posts.
 
 The template design utilized open source, and the front-end was made to suit the atmosphere. (Notice, Login)
 
