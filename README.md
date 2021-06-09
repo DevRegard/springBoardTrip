@@ -1,4 +1,3 @@
-# springBoardTrip
 First study Spring MVC project
 
 # 프로젝트 소개
