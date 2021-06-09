@@ -5,7 +5,7 @@ Spring MVC를 사용하는 두번째 교육기관 팀 프로젝트입니다.
 
 해당 프로젝트를 실행하려면, "trip" 이라는 데이터베이스를 생성하고, trip.sql을 가져와야 합니다.
 
-회원가입과 로그인, 공지사항, 자주묻는질문, Q&A, 관리자 게시판, 비밀글 등 백엔드 게시판을 개발했습니다.
+회원가입과 로그인, 공지사항, 자주묻는질문, Q&A, 관리자 페이지, 비밀글 등 백엔드 게시판을 개발했습니다.
 
 템플릿 디자인은 오픈소스를 활용하였고, 프론트엔드는 적절히 분위기에 맞게 제작하였습니다. (공지사항, 로그인)
 
@@ -24,7 +24,7 @@ This is a second project of my Academy team collaboration, using Spring MVC
 
 To run this project, you should create a database calld "trip", and import trip.sql into it.
 
-I have developed backend bulletin boards such as member registration and login, notices, frequently asked questions, Q&A, administrator bulletin boards, and secret posts.
+I have developed backend bulletin boards such as member registration and login, notices, frequently asked questions, Q&A, admin page, and secret posts.
 
 The template design utilized open source, and the front-end was made to suit the atmosphere. (Notice, Login)
 
