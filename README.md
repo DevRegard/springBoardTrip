@@ -30,7 +30,7 @@ The template design utilized open source, and the front-end was made to suit the
 
 The core development purpose of this project is to convert the project codes developed with MVC technique to Spring MVC.
 
-Although it is a work that is still in the beginning stage, I am registering this project for more advanced bulletin board development in the future.
+Although it is a work that is still in the beginning stage, I am registering this project for more advanced board development in the future.
 
 If you have any feedback, questions or comments, you are always welcome, and we will take it right away.
 		
