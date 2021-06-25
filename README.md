@@ -1,5 +1,3 @@
-First study Spring MVC project
-
 # Project Introduction
 This is a second project of my Academy team collaboration, using Spring MVC
 
@@ -16,6 +14,7 @@ Although it is a work that is still in the beginning stage, I am registering thi
 If you have any feedback, questions or comments, you are always welcome, and we will take it right away.
 		
 Thank you :)
+
 
 
 # 프로젝트 소개
