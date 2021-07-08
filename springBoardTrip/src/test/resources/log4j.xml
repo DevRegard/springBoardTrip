@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="co.kr.teamSpring_Trip">
+	<logger name="co.kr.springBoardTrip">
 		<level value="info" />
 	</logger>
 	
