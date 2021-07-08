@@ -1,4 +1,4 @@
-package co.kr.teamBoardTrip;
+package co.kr.springBoardTrip;
 
 import java.text.DateFormat;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package co.kr.teamBoardTrip; //teamBoardTrip 
+package co.kr.springBoardTrip; //teamBoardTrip 
 
 import org.springframework.stereotype.Controller; //컨트롤러
 import org.springframework.web.bind.annotation.ModelAttribute;
