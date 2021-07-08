@@ -30,7 +30,7 @@
 	  <td>
 	   <input type="button" value="게시판 목록" onClick="location='travel_list.do'">
 	   <input type="button" value="로그인" onClick="location='loginForm.do'">
-	   	   국내외 여행 정보 제공 사이트
+	   	   국내외 여행 정보 제공 사이트 입니다. 반갑습니다
 	  </td>
 	</tr>
   </table>
