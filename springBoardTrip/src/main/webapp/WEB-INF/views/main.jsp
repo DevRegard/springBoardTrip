@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>국내외 여행 정보 사이트</title>
 
 <!-- head -->
 <link href="resources/styleMain.css" type="text/css" rel="stylesheet">
@@ -30,7 +30,7 @@
 	  <td>
 	   <input type="button" value="게시판 목록" onClick="location='travel_list.do'">
 	   <input type="button" value="로그인" onClick="location='loginForm.do'">
-	   	   여행정보 공유 사이트 입니다.
+	   	   국내외 여행 정보 제공 사이트
 	  </td>
 	</tr>
   </table>
