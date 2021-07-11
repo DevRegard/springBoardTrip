@@ -26,6 +26,6 @@ The core purpose of the project is to develop the backend and frontend of the bu
 
 This is a work I made at the first stage I learned, and I am releasing this project to develop a more advanced bulletin board.
 
-If you have any feedback, questions or comments, we welcome and promptly accept them.
+If you have any feedback, questions or comments, I welcome and promptly accept them.
 
 Thank you :)
