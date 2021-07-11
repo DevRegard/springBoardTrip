@@ -1,5 +1,5 @@
 # Project Introduction
-This is a second project of my Academy team collaboration, using Spring MVC
+This is the second team project for educational institutions using Spring MVC.
 
 To run this project, you should create a database calld "trip", and import trip.sql into it.
 
@@ -18,7 +18,7 @@ Thank you :)
 
 
 # 프로젝트 소개
-Spring MVC를 사용하는 두번째 교육기관 팀 프로젝트입니다. 
+Spring MVC를 사용하는 교육기관 두번째 팀 프로젝트입니다. 
 
 해당 프로젝트를 실행하려면, "trip" 이라는 데이터베이스를 생성하고, trip.sql을 가져와야 합니다.
 
