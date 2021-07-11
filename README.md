@@ -1,20 +1,3 @@
-# Project Introduction
-This is the second team project for educational institutions using Spring MVC.
-
-To run this project, you should create a database calld "trip", and import trip.sql into it.
-
-I have developed backend bulletin boards such as member registration and login, notices, FAQ, Q&A, admin page, and secret posts.
-
-The core purpose of this project is to develop the backend and frontend of the bulletin board based on Spring FrameWork.
-
-It is a work created at the first stage of learning, and this project is distributed for further development of bulletin boards.
-
-If you have any feedback, questions or comments, we welcome and promptly accept them.
-		
-Thank you :)
-
-
-
 # 프로젝트 소개
 Spring MVC를 사용하는 교육기관 두번째 팀 프로젝트입니다. 
 
@@ -29,3 +12,20 @@ Spring MVC를 사용하는 교육기관 두번째 팀 프로젝트입니다.
 피드백을 주시거나 질문 혹은 의견이 있으시다면 언제든지 환영하며 즉각적으로 수용하겠습니다.
 		
 감사합니다 :)
+
+
+
+# Project Introduction
+This is the second team project for educational institutions using Spring MVC.
+
+To run this project, you should create a database calld "trip", and import trip.sql into it.
+
+I have developed backend bulletin boards such as member registration and login, notices, FAQ, Q&A, admin page, and secret posts.
+
+The core purpose of this project is to develop the backend and frontend of the bulletin board based on Spring FrameWork.
+
+It is a work created at the first stage of learning, and this project is distributed for further development of bulletin boards.
+
+If you have any feedback, questions or comments, we welcome and promptly accept them.
+		
+Thank you :)
