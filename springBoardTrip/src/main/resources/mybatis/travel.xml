@@ -75,5 +75,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from travel
 		where num=#{num} AND pw=#{pw}
 	</delete>
-	
 </mapper>
