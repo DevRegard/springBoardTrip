@@ -22,10 +22,15 @@ public class MemberController {
    @Autowired
    private SqlSession sqlSession;//변수 선언
    
+   
    @RequestMapping("main.do")
    public String mm() {
       return "main";//뷰 리턴 main.jsp
    }
+   
+   
+   
+   
    
    //회원가입 폼
    @RequestMapping("insertForm.do")
@@ -33,6 +38,10 @@ public class MemberController {
       //return "member/insertForm";//뷰 리턴 member/insertForm.jsp 만들고 작성
       return ".main.member.insertForm";//뷰 리턴 member/insertForm.jsp 만들고 작성
    }
+   
+   
+   
+   
    
    //id중복 체크
    @RequestMapping(value="idCheck.do",method=RequestMethod.POST)
@@ -52,6 +61,10 @@ public class MemberController {
       return "/member/idCheck";//뷰 리턴  idCheck.jsp 만들고 작성
     }
    
+   
+   
+   
+   
    //회원 가입
    @RequestMapping(value="insertPro.do",method=RequestMethod.POST)
    public String memInsert(@ModelAttribute("memberDto") MemberDto memberDto, HttpServletRequest request)
@@ -67,12 +80,20 @@ public class MemberController {
       return ".main.member.loginForm";//뷰리턴 member/loginForm.jsp 만들기
    }
    
+   
+   
+   
+   
    //로그인 폼
    @RequestMapping("loginForm.do")
    public String loginF() {
 	   //return "member/loginForm";//뷰리턴, loginForm.jsp 작성
 	   return ".main.member.loginForm";//뷰리턴, loginForm.jsp 작성
    }
+   
+   
+   
+   
    
    //로그인(DB정보  확인)
    @RequestMapping(value="loginPro.do",method=RequestMethod.POST)
@@ -94,12 +115,20 @@ public class MemberController {
 	   return ".main.member.loginSuccess";//뷰리턴
    }
    
+   
+   
+   
+   
    //로그아웃
    @RequestMapping("logOut.do")
    public String logOut() {
 	  // return "/member/logOut";//뷰 리턴
 	   return ".main.member.logOut";//뷰 리턴
    }
+   
+   
+   
+   
    
    //회원 수정 폼
    @RequestMapping(value="editForm.do", method=RequestMethod.POST)
@@ -119,6 +148,10 @@ public class MemberController {
 	   return ".main.member.editForm";//뷰리턴 /member/editForm.jsp 만들기
    }
    
+   
+   
+   
+   
    //DB회원 정보 수정
    @RequestMapping(value="editPro.do", method=RequestMethod.POST)
    public String editP(@ModelAttribute("memberDto") MemberDto memberDto, HttpServletRequest request)
@@ -133,6 +166,10 @@ public class MemberController {
 	   sqlSession.update("member.memberUpdate",memberDto);
 	   return "main";//views/main.jsp 만들기
    }
+   
+   
+   
+   
    
    //회원탈퇴
    @RequestMapping("deleteMember.do")
