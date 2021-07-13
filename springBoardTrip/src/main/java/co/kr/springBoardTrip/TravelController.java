@@ -27,8 +27,9 @@ public class TravelController {
 	@Autowired//setter가 자동
 	private SqlSession sqlSession;//변수 MyBatis 사용 
 
+	
 
-	//글쓰기 폼, 답글, 원글 writeForm
+		//글쓰기 폼, 답글, 원글 writeForm
 		@RequestMapping("travel_writeForm.do") //요청매핑, 프로젝트에서 writeForm.do하면 writeForm.jsp 실행
 		public String writeF(Model model, String num, String pageNum) {
 	
@@ -44,7 +45,10 @@ public class TravelController {
 		}// writeForm()---
 		
 
-	//DB에 글쓰기 insert
+		
+		
+		
+		//DB에 글쓰기 insert
 		@RequestMapping(value="/travel_writePro.do",method=RequestMethod.POST)
 		public String writePro(@ModelAttribute("travelDto") TravelDto travelDto,HttpServletRequest request)
 				throws IOException,NamingException{
@@ -69,8 +73,11 @@ public class TravelController {
 			return "redirect:travel_list.do";//jsp의 response.sendReditect("list.jsp")같다
 		}//writePro() end
 
+		
+		
+		
 
-	//list 리스트
+		//list 리스트
 		@RequestMapping("travel_list.do")
 		public String listtravel(Model model, String pageNum)
 				throws IOException,NamingException{
@@ -120,8 +127,11 @@ public class TravelController {
 			return ".main.travel.travel_list";//뷰 리턴
 		}
 	
+		
+		
+		
 
-	//조횟수 증가, 글내용보기
+		//조횟수 증가, 글내용보기
 		@RequestMapping("travel_content.do")
 		public String content(Model model,String num, String pageNum)
 		throws IOException,NamingException{
@@ -143,7 +153,10 @@ public class TravelController {
 		}
 
 	
-	//글수정 폼
+		
+		
+		
+		//글수정 폼
 		@RequestMapping("travel_updateForm.do")
 		public ModelAndView updateForm(String num, String pageNum) 
 		throws IOException,NamingException{
@@ -161,7 +174,10 @@ public class TravelController {
 		}
 
 		
-	//DB 글 수정
+		
+		
+		
+		//DB 글 수정
 		@RequestMapping(value="travel_updatePro.do",method=RequestMethod.POST)
 		public String travel_updatePro(String num, String pw, Model model,TravelDto travelDto,String pageNum)
 				throws IOException,NamingException{
@@ -184,7 +200,10 @@ public class TravelController {
 		}
 		
 		
-	//글삭제 폼
+		
+		
+		
+		//글삭제 폼
 		@RequestMapping("travel_delete.do")
 		public ModelAndView delete(String num, String pageNum) 
 		throws IOException,NamingException{
@@ -201,7 +220,11 @@ public class TravelController {
 			return mv;
 		}
 
-	//DB 글 삭제
+		
+		
+		
+		
+		//DB 글 삭제
 		@RequestMapping(value="travel_deletePro.do",method=RequestMethod.POST)
 		public String deletePro(String num, String pw, Model model,TravelDto travelDto,String pageNum)
 				throws IOException,NamingException{

@@ -23,9 +23,6 @@ public class NoticeController {
 	
 	@Autowired
 	private SqlSession sqlSession; // MyBatis
-
-	
-	
 	
 	
 	//공지사항 등록 (글 쓰기) ->  noticeWriteForm.jsp
@@ -77,8 +74,9 @@ public class NoticeController {
 		
 		int pageSize = 10;
 		int currentPage = Integer.parseInt(pageNum);
-		int startRow = (currentPage - 1) * pageSize + 1; //1 page의 첫번째 row 구하기
-		int endRow = currentPage * pageSize; //1 page의 마지막 row 구하기
+		int startRow = (currentPage - 1) * pageSize + 1; //1페이지는 1부터, 2페이지는 11부터, 3페이지는 21부터
+		int endRow = currentPage * pageSize; //1페이지는 10까지, 2페이지는 20까지, 3페이지는 30까지
+		// {startRow} ~ {endRow}
 		
 		int count = 0; //총 글 수 넣기 위해
 		int pageBlock = 10; //블럭당 10개 패이지로 묶기
@@ -88,7 +86,7 @@ public class NoticeController {
 		
 		int number = count - (currentPage - 1) * pageSize; //글번호를 역순으로 하기
 		
-		HashMap <String, Integer> map = new HashMap<String, Integer>(); //HashMap 핵심
+		HashMap <String, Integer> map = new HashMap <String, Integer>();
 		map.put("start", startRow - 1); //시작 위치, MySql은 0부터 시작
 		map.put("cnt", pageSize); //글 갯수 ( 10개씩 )
 		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1); //총 페이지 수
