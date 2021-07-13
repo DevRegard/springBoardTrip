@@ -146,7 +146,6 @@ public class NoticeController {
 		
 		model.addAttribute("n_content", n_content);
 		model.addAttribute("n_num", numCount); //*** String n_num -> INT numCount(조회수)
-		
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("noticeDto", noticeDto);
 		
