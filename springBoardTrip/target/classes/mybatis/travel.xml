@@ -54,12 +54,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
-	<!-- update , DB 글수정 ds-->
+	<!-- update , DB 글수정-->
 	<update id="travel_updatePro" parameterType="travel77">
 		update travel
 		set writer=#{writer},subject=#{subject},language=#{language},distance=#{distance},capital=#{capital},food=#{food},content=#{content}
 		where num=#{num} AND pw=#{pw}
 	</update>
+	
 	
 
 	<select id="getPW" parameterType="map"
