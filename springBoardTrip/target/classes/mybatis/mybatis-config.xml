@@ -5,11 +5,11 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <configuration>
 
-	<typeAliases> <!-- 별칭주는것 -->
+	<typeAliases> <!-- 별칭 -->
 		<typeAlias alias="faq77" type="model.faq.FaqDto"/>
 		<typeAlias alias="travel77" type="model.travel.TravelDto"/>
-		<typeAlias type="model.member.MemberDto" alias="member77"/>
-		<typeAlias type="model.notice.NoticeDto" alias="mnN"/> <!-- 경로 생각나도록 변수 설정 -->
+		<typeAlias alias="member77" type="model.member.MemberDto"/>
+		<typeAlias alias="mnN" type="model.notice.NoticeDto"/>
 	</typeAliases>
 	
 	<mappers>

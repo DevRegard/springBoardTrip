@@ -4,10 +4,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="travel">
+
 	<!-- 최대 글번호 얻기 -->
 	<select id="numMax" resultType="Integer">
 		select max(num) from travel
 	</select>
+
 
 
 	<!-- insert -->
@@ -16,10 +18,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{writer},#{subject},#{language},#{distance},#{capital},#{food},#{pw},NOW(),#{content},#{ip})
 	</insert>
 
+
+
 	<!-- 글갯수 -->
 	<select id="selectCount" resultType="int">
 		select count(*) from travel;
 	</select>
+
+
 
 	<!-- 리스트 list -->
 	<select id="selectList" parameterType="java.util.HashMap"
@@ -29,11 +35,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		limit #{start},#{cnt}
 	</select>
 
+
+
 	<!-- 조횟수 증가 -->
 	<update id="readCount" parameterType="int">
 		update travel set readcount=readcount+1
 		where num=#{num}
 	</update>
+
+
 
 	<!-- 글 내용 보기 content -->
 	<select id="getTravel" parameterType="int"
@@ -41,6 +51,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from travel
 		where num=#{num}
 	</select>
+
+
 
 	<!-- update , DB 글수정 -->
 	<update id="travel_updatePro" parameterType="travel77">
@@ -55,6 +67,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from travel
 		where num=#{num} AND pw=#{pw}
 	</select>
+	
+	
+	
 	<!-- delete -->
 	<delete id="travel_deletePro" parameterType="travel77">
 		delete from travel

@@ -9,16 +9,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select max(num) from faq
 	</select>
 
+
+
 	<!-- insert -->
 	<insert id="insertFaq" parameterType="faq77">
 		insert into faq(writer,subject,pw,regdate,content,ip)
 		values(#{writer},#{subject},#{pw},NOW(),#{content},#{ip})
 	</insert>
 
+
+
 	<!-- 글갯수 -->
 	<select id="selectCount" resultType="int">
 		select count(*) from faq;
 	</select>
+
+
 
 	<!-- 리스트 list -->
 	<select id="selectList" parameterType="java.util.HashMap"
@@ -28,12 +34,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		limit #{start},#{cnt}
 	</select>
 
+
+
 	<!-- 글 내용 보기 content -->
 	<select id="getFaq" parameterType="int"
 		resultType="faq77">
 		select * from faq
 		where num=#{num}
 	</select>
+
+
 
 	<!-- update , DB 글수정 -->
 	<update id="faq_updatePro" parameterType="faq77">
@@ -42,11 +52,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where num=#{num} AND pw=#{pw}
 	</update>
 
+
+
 	<select id="getPW" parameterType="map"
 		resultType="faq77">
 		select * from faq
 		where num=#{num} AND pw=#{pw}
 	</select>
+	
+	
 	
 	<!-- delete -->
 	<delete id="faq_deletePro" parameterType="faq77">
