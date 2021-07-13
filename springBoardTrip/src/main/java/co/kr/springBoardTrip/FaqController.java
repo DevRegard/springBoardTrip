@@ -29,7 +29,6 @@ public class FaqController {
 	private SqlSession sqlSession; //변수 MyBatis 사용 
 
 	
-
 	//글쓰기 폼, 답글, 원글 writeForm
 	@RequestMapping("faq_writeForm.do") //요청매핑, 프로젝트에서 faq_writeForm.do하면 writeForm.jsp 실행
 	public String writeF(Model model, String num, String pageNum) {
@@ -44,6 +43,8 @@ public class FaqController {
 		return ".main.faq.faq_writeForm"; //뷰를 리턴, views/writeForm.jsp 작성
 	}// writeForm()---
 
+	
+	
 	
 	
 	//DB에 글쓰기 insert
@@ -74,6 +75,8 @@ public class FaqController {
 
 	
 
+	
+	
 	//list 리스트
 	@RequestMapping("faq_list.do")
 	public String listfaq(Model model, String pageNum)
@@ -126,6 +129,8 @@ public class FaqController {
 
 	
 	
+	
+	
 	//조횟수 증가, 글내용보기
 	@RequestMapping("faq_content.do")
 	public String content(Model model,String num, String pageNum)
@@ -147,6 +152,9 @@ public class FaqController {
 	}
 
 	
+	
+	
+	
 	//글수정 폼
 	@RequestMapping("faq_updateForm.do")
 	public ModelAndView faq_updateForm(String num, String pageNum) 
@@ -164,6 +172,8 @@ public class FaqController {
 		return mv;
 	}
 
+	
+	
 	
 	
 	//DB 글 수정
@@ -189,6 +199,8 @@ public class FaqController {
 	}
 
 	
+	
+	
 
 	//글삭제 폼
 	@RequestMapping("faq_delete.do")
@@ -207,6 +219,8 @@ public class FaqController {
 		return mv;
 	}
 
+	
+	
 	
 	
 	//DB 글 삭제
