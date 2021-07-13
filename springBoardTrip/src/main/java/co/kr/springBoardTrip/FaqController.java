@@ -34,8 +34,8 @@ public class FaqController {
 	@RequestMapping("faq_writeForm.do") //요청매핑, 프로젝트에서 faq_writeForm.do하면 writeForm.jsp 실행
 	public String writeF(Model model, String num, String pageNum) {
 
-		if(num==null) {//원글쓰기
-			num="0";//글번호
+		if(num == null) {//원글쓰기
+			num = "0";//글번호
 		}
 
 		model.addAttribute("pageNum",pageNum); //request.setAttribute()와 같은 개념

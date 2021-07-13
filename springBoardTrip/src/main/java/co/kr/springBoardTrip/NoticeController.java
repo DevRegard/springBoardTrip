@@ -1,4 +1,4 @@
-package co.kr.springBoardTrip; //teamBoardTrip 
+package co.kr.springBoardTrip;
 
 import org.springframework.stereotype.Controller; //컨트롤러
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired; //자동 Setter 작업
-import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSession; // MyBatis
 import org.springframework.ui.Model;
 
-import model.notice.NoticeDto; //notice DB
+import model.notice.NoticeDto; //공지사항 DB
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -22,25 +22,30 @@ import javax.servlet.http.HttpServletRequest;
 public class NoticeController {
 	
 	@Autowired
-	private SqlSession sqlSession;
+	private SqlSession sqlSession; // MyBatis
 
-//____________________________________________________________________________________
-	//공지사항 등록 (글 쓰기) , noticeWriteForm.jsp
+	
+	
+	
+	
+	//공지사항 등록 (글 쓰기) ->  noticeWriteForm.jsp
 	@RequestMapping("/noticeWriteForm.do")
 	public String noticePlusForm(Model model, String n_num){
 		
 		n_num = "0";
 		
 		//View에서 사용할 속성
-		model.addAttribute("n_num", new Integer(n_num)); //Integer()는 null값 처리 가능, 산술연산불가 ===> SQL
+		model.addAttribute("n_num", new Integer(n_num)); //Integer()는 null값 처리 가능, 산술연산불가 ===> SQL 작업 적합
 //		model.addAttribute("n_num", n_num); //INT는 null값처리 불가능, 산술연산만 가능
 		
 		return ".main.notice.noticeWriteForm"; //views/notice/noticeWriteForm.jsp
 	}
 	
 	
-//____________________________________________________________________________________
-	//DB에 글쓰기 , noticeWritePro.jsp
+	
+	
+	
+	//DB에 글쓰기 ->  noticeWritePro.jsp
 	@RequestMapping(value = "noticeWritePro.do", method = RequestMethod.POST)
 	public String noticePlusProc(@ModelAttribute("noticeDto") NoticeDto noticeDto,
 			HttpServletRequest request) throws IOException, NamingException{
@@ -60,8 +65,10 @@ public class NoticeController {
 	}
 	
 	
-//____________________________________________________________________________________	
-	//리스트 , noticeList.jsp
+	
+	
+	
+	//리스트  ->  noticeList.jsp
 	@RequestMapping("noticeList.do")
 	public String noticeView(Model model, String pageNum)
 		throws IOException, NamingException{
@@ -120,8 +127,10 @@ public class NoticeController {
 	}
 	
 	
-//____________________________________________________________________________________
-	//글 내용 보기 + 조회수 증가 , noticeContent.jsp
+	
+	
+	
+	//글 내용 보기 + 조회수 증가 ->  noticeContent.jsp
 	@RequestMapping("noticeContent.do")
 	public String noticeText(Model model, String n_num, String pageNum)
 	throws IOException, NamingException{
@@ -145,8 +154,10 @@ public class NoticeController {
 	}
 	
 	
-//____________________________________________________________________________________
-	//글 수정 , noticeUpdateForm.jsp
+	
+	
+	
+	//글 수정 ->  noticeUpdateForm.jsp
 	@RequestMapping("noticeUpdateForm.do")
 	public ModelAndView updateForm(String n_num, String pageNum)
 	throws IOException, NamingException{
@@ -161,6 +172,9 @@ public class NoticeController {
 		
 		return mv;
 	}
+	
+	
+	
 	
 	
 //____________________________________________________________________________________
@@ -179,8 +193,12 @@ public class NoticeController {
 //		return mv;
 //		
 //	}
+//____________________________________________________________________________________
 	
-	//Spring MVC , 경우의 수에 따라 메세지 출력 및 뷰 이동 [DB에 글수정]
+	
+	
+	
+	//Spring MVC -> 경우의 수에 따라 메세지 출력 및 뷰 이동 [DB에 글수정]
 	@RequestMapping(value = "noticeUpdatePro.do", method = RequestMethod.POST)
 	public String noticeUpdatePro(String n_num, String u_pass, Model model, NoticeDto noticeDto, String pageNum)
 	throws IOException, NamingException{
@@ -207,8 +225,10 @@ public class NoticeController {
 	}
 	
 	
-//____________________________________________________________________________________
-	//글 삭제폼 , noticeDeleteForm.jsp
+	
+	
+	
+	//글 삭제폼 ->  noticeDeleteForm.jsp
 	@RequestMapping("noticeDeleteForm.do")
 	public ModelAndView noticeDelete(String n_num, String pageNum)
 	throws IOException, NamingException{
@@ -226,8 +246,10 @@ public class NoticeController {
 	}
 	
 	
-//____________________________________________________________________________________
-	//DB에 글 삭제 , noticeDeletePro.jsp
+	
+	
+	
+	//DB에 글 삭제 ->  noticeDeletePro.jsp
 	@RequestMapping(value="noticeDeletePro.do",method = RequestMethod.POST)
 	public String noticeDeletePro(String n_num, String u_pass, Model model, NoticeDto noticeDto, String pageNum)
 	throws IOException, NamingException{
