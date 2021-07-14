@@ -15,4 +15,4 @@
 
 # Project Introduction
 
-We have developed bulletin boards such as membership registration and login, notices, FAQ, Q&A, and admin page.![image](https://user-images.githubusercontent.com/77965998/125665243-93c3f27f-3292-4def-a816-614b73411f84.png)
+We have developed bulletin boards such as membership registration and login, notices, FAQ, Q&A, and admin page.
