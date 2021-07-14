@@ -3,7 +3,7 @@
 # 프로젝트 소개
 |Project Name|Summary|Dev Staff|Maintenance|
 |------|---|---|---|
-|국내외 여행시 정보 제공 사이트|정보 공유 게시판 및 회원관리 프로젝트 기획 및 개발|4|1|
+|국내외 여행지 정보 제공 사이트|정보 공유 게시판 및 회원관리 프로젝트 기획 및 개발|4|1|
 
 
 |Dev Environment|Technology Stack|
