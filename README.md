@@ -7,7 +7,7 @@
 
 |개발환경|기술스택|
 |------|---|
-|Windows 10, STS-3.9.15, Tomcat 8.0, MySQL-5.5.37|Spring MVC, Java 1.8.0, HTML5, CSS3, JavaScript, JQeury, MySQL5,JSP, Servlet|
+|Windows 10| STS-3.9.15, Tomcat 8.0, MySQL-5.5.37|Spring MVC, Java 1.8.0, HTML5, CSS3, JavaScript, JQeury, MySQL5,JSP, Servlet|
 
 # 프로젝트 소개
 Spring MVC를 사용하는 교육기관 두번째 팀 프로젝트입니다. 
