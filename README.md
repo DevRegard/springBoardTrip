@@ -7,11 +7,11 @@
 
 |개발환경|기술스택|
 |------|---|
-|STS-3.9.15, Tomcat 8.0, MySQL-5.5.37|Spring MVC, Java 1.8.0, HTML5, CSS3, JavaScript, JQeury, MySQL5,JSP, Servlet|
+|STS-3.9.15, Tomcat 8.0, MySQL-5.5.37|Spring MVC, Java 1.8, HTML5, CSS3, JavaScript, JQeury, MySQL5, JSP, Servlet|
 
 # 프로젝트 소개
 
-회원가입과 로그인, 공지사항, 나라정보, 자주묻는질문, Q&A, 관리자 페이지 등 게시판을 개발했습니다.
+회원가입과 로그인, 공지사항, 나라정보, 자주묻는질문, Q&A, 관리자 페이지 등 개발했습니다.
 
 # Project Introduction
 
