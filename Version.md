@@ -1,5 +1,5 @@
 	v1.2 
-		version.rd 생성 및 작성
+		Version.md 생성 및 작성
 		주석 및 들여쓰기 2차 정리 (컨트롤러, XML)
 		Change README.rd
 		Project Update Plan (New function, New UI) 
