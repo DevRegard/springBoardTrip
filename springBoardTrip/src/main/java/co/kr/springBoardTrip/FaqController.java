@@ -13,9 +13,9 @@ import model.faq.FaqDto;
 
 import java.util.*;//HashMap 사용
 import java.io.IOException;
+import javax.naming.NamingException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.naming.NamingException;
 
 
 //Front Controller(org.springframework.web.servlet.DispatcherServlet)

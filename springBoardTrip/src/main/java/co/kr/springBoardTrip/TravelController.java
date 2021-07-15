@@ -37,8 +37,8 @@ public class TravelController {
 				num = "0";//글번호
 			}
 	
-			model.addAttribute("pageNum",pageNum);//request.setAttribute()와 같은 개념
-			model.addAttribute("num",new Integer(num));
+			model.addAttribute("pageNum", pageNum);//request.setAttribute()와 같은 개념
+			model.addAttribute("num", new Integer(num));
 			
 			//return "travel/writeForm";//뷰를 리턴, views/writeForm.jsp 작성
 			return ".main.travel.travel_writeForm";//뷰를 리턴, views/writeForm.jsp 작성
@@ -53,7 +53,7 @@ public class TravelController {
 		public String writePro(@ModelAttribute("travelDto") TravelDto travelDto,HttpServletRequest request)
 				throws IOException,NamingException{
 	
-			int maxNum=0;//최대 글번호, 변수선언
+			int maxNum = 0;//최대 글번호, 변수선언
 			if(sqlSession.selectOne("travel.numMax") != null) {
 				//최대 글번호가 null이 아니면, 최대글번호가 있으면
 				maxNum=sqlSession.selectOne("travel.numMax");
