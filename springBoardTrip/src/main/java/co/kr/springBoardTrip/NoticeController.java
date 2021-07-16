@@ -247,7 +247,7 @@ public class NoticeController {
 	
 	
 	//DB에 글 삭제 ->  noticeDeletePro.jsp
-	@RequestMapping(value="noticeDeletePro.do",method = RequestMethod.POST)
+	@RequestMapping(value="noticeDeletePro.do", method=RequestMethod.POST)
 	public String noticeDeletePro(String n_num, String u_pass, Model model, NoticeDto noticeDto, String pageNum)
 	throws IOException, NamingException{
 		

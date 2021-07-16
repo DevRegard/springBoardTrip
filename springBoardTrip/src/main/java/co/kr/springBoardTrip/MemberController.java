@@ -49,9 +49,9 @@ public class MemberController {
    throws IOException,NamingException{
       
       //System.out.println("id:"+id);
-      int check=-1;//사용중
+      int check = -1;//사용중
       
-      MemberDto memberDto=sqlSession.selectOne("member.selectOne",m_id);
+      MemberDto memberDto = sqlSession.selectOne("member.selectOne",m_id);
       if(memberDto==null) {
          check=1;//사용 가능한 id
       }

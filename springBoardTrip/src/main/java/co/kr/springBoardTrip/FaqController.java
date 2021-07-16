@@ -15,7 +15,7 @@ import java.util.*;//HashMap 사용
 import java.io.IOException;
 import javax.naming.NamingException;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest; //request 객체
 
 
 //Front Controller(org.springframework.web.servlet.DispatcherServlet)
@@ -207,10 +207,10 @@ public class FaqController {
 	public ModelAndView delete(String num, String pageNum) 
 	throws IOException,NamingException{
 		
-		int num1=Integer.parseInt(num);
-		FaqDto faqDto=sqlSession.selectOne("faq.getFaq",num1);
+		int num1 = Integer.parseInt(num);
+		FaqDto faqDto = sqlSession.selectOne("faq.getFaq",num1);
 		
-		ModelAndView mv=new ModelAndView();
+		ModelAndView mv = new ModelAndView();
 		mv.addObject("pageNum",pageNum);
 		mv.addObject("faqDto",faqDto);
 		
