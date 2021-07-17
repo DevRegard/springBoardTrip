@@ -210,9 +210,9 @@ public class NoticeController {
 			model.addAttribute("msg", "수정 실패 : 암호가 일치하지 않습니다. \n 암호를 정확히 입력해주세요.");
 			return ".main.notice.noticeUpdateForm";
 			
-		}else {
+		} else {
 			sqlSession.update("notice.noticeUpdatePro", noticeDto); // ***** XML, 글 수정 
-//			model.addAttribute("msg","정상적으로 글 수정 완료했습니다. \n 리스트로 돌아갑니다.");
+//			model.addAttribute("msg2","정상적으로 글 수정 완료했습니다. \n 리스트로 돌아갑니다.");
 		}//if else end
 		
 		model.addAttribute("noticeDto",noticeDto);
