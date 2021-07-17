@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 
-	<!-- 조횟수 증가 -->
+	<!-- 조회수 증가 -->
 	<update id="readCount" parameterType="int">
 		update travel set readcount=readcount+1
 		where num=#{num}

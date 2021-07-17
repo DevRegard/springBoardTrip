@@ -134,7 +134,7 @@ public class FaqController {
 	
 	
 	
-	//조회수 증가, 글내용보기
+	//조회수 증가(?), 글내용보기
 	@RequestMapping("faq_content.do")
 	public String content(Model model,String num, String pageNum)
 	throws IOException, NamingException{

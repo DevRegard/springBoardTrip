@@ -7,65 +7,60 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 최대 글번호 얻기 -->
 	<select id="numMax" resultType="Integer">
-		select max(num) from faq
+		SELECT max(num) 
+		FROM faq
 	</select>
 
 
-
-	<!-- insert -->
+	<!-- 글쓰기 -->
 	<insert id="insertFaq" parameterType="faq77">
-		insert into faq(writer,subject,pw,regdate,content,ip)
-		values(#{writer},#{subject},#{pw},NOW(),#{content},#{ip})
+		INSERT INTE faq(writer,subject,pw,regdate,content,ip)
+		VALUES(#{writer},#{subject},#{pw},NOW(),#{content},#{ip})
 	</insert>
-
 
 
 	<!-- 글갯수 -->
 	<select id="selectCount" resultType="int">
-		select count(*) from faq;
+		SELECT count(*) 
+		FROM faq;
 	</select>
-
 
 
 	<!-- 리스트 list -->
 	<select id="selectList" parameterType="java.util.HashMap" resultType="faq77">
-		select * from faq
-		order by num desc
-		limit #{start},#{cnt}
+		SELECT * from faq
+		ORDER BY num desc
+		LIMIT #{start},#{cnt}
 	</select>
-
 
 
 	<!-- 글 내용 보기 content -->
-	<select id="getFaq" parameterType="int"
-		resultType="faq77">
-		select * from faq
-		where num=#{num}
+	<select id="getFaq" parameterType="int" resultType="faq77">
+		SELECT * from faq
+		WHERE num=#{num}
 	</select>
-
 
 
 	<!-- update , DB 글수정 -->
 	<update id="faq_updatePro" parameterType="faq77">
-		update faq
-		set writer=#{writer},subject=#{subject},content=#{content}
-		where num=#{num} AND pw=#{pw}
+		UPDATE faq
+		SET writer=#{writer},subject=#{subject},content=#{content}
+		WHERE num=#{num} AND pw=#{pw}
 	</update>
 
 
-
+	<!-- PW 가져오기 -->
 	<select id="getPW" parameterType="map"
 		resultType="faq77">
-		select * from faq
-		where num=#{num} AND pw=#{pw}
+		SELECT * from faq
+		WHERE num=#{num} AND pw=#{pw}
 	</select>
 	
 	
-	
-	<!-- delete -->
+	<!-- 글수정 -->
 	<delete id="faq_deletePro" parameterType="faq77">
-		delete from faq
-		where num=#{num} AND pw=#{pw}
+		DELETE from faq
+		WHERE num=#{num} AND pw=#{pw}
 	</delete>
 
 </mapper>
