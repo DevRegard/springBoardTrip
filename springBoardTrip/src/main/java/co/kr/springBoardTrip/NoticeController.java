@@ -73,11 +73,12 @@ public class NoticeController {
 		if(pageNum == null) {pageNum = "1";}
 		//변수 정리 -> 가독성 향상
 		int pageSize,
-			currentPage;
+			currentPage,
+			startRow;
 		
 		pageSize = 10;
 		currentPage = Integer.parseInt(pageNum);
-		int startRow = (currentPage - 1) * pageSize + 1; //1페이지는 1부터, 2페이지는 11부터, 3페이지는 21부터
+		startRow = (currentPage - 1) * pageSize + 1; //1페이지는 1부터, 2페이지는 11부터, 3페이지는 21부터
 		int endRow = currentPage * pageSize; //1페이지는 10까지, 2페이지는 20까지, 3페이지는 30까지
 		// {startRow} ~ {endRow}
 		
