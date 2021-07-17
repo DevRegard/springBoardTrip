@@ -7,73 +7,70 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 최대 글번호 얻기 -->
 	<select id="numMax" resultType="Integer">
-		select max(num) from travel
+		SELECT max(num) 
+		FROM travel
 	</select>
 
 
-
-	<!-- insert -->
+	<!-- 글작성 -->
 	<insert id="insertTravel" parameterType="travel77">
-		insert into travel(writer,subject,language,distance,capital,food,pw,regdate,content,ip)
-		values(#{writer},#{subject},#{language},#{distance},#{capital},#{food},#{pw},NOW(),#{content},#{ip})
+		INSERT INTO travel(writer,subject,language,distance,capital,food,pw,regdate,content,ip)
+		VALUES(#{writer},#{subject},#{language},#{distance},#{capital},#{food},#{pw},NOW(),#{content},#{ip})
 	</insert>
-
 
 
 	<!-- 글갯수 -->
 	<select id="selectCount" resultType="int">
-		select count(*) from travel;
+		SELECT count(*) 
+		FROM travel;
 	</select>
 
 
-
-	<!-- 리스트 list -->
-	<select id="selectList" parameterType="java.util.HashMap"
-		resultType="travel77">
-		select * from travel
-		order by num desc
-		limit #{start},#{cnt}
+	<!-- 리스트 검색 -->
+	<select id="selectList" parameterType="java.util.HashMap" resultType="travel77">
+		SELECT * from travel
+		ORDER BY num desc
+		LIMIT #{start},#{cnt}
 	</select>
-
 
 
 	<!-- 조회수 증가 -->
 	<update id="readCount" parameterType="int">
-		update travel set readcount=readcount+1
-		where num=#{num}
+		UPDATE travel 
+		SET readcount=readcount+1
+		WHERE num=#{num}
 	</update>
 
 
-
-	<!-- 글 내용 보기 content -->
+	<!-- 글 내용 보기 -->
 	<select id="getTravel" parameterType="int"
 		resultType="travel77">
-		select * from travel
-		where num=#{num}
+		SELECT * 
+		FROM travel
+		WHERE num=#{num}
 	</select>
 
 
-
-	<!-- update , DB 글수정-->
+	<!-- DB에서 글 수정-->
 	<update id="travel_updatePro" parameterType="travel77">
-		update travel
-		set writer=#{writer},subject=#{subject},language=#{language},distance=#{distance},capital=#{capital},food=#{food},content=#{content}
-		where num=#{num} AND pw=#{pw}
+		UPDATE travel
+		SET writer=#{writer},subject=#{subject},language=#{language},distance=#{distance},capital=#{capital},food=#{food},content=#{content}
+		WHERE num=#{num} AND pw=#{pw}
 	</update>
 	
 	
-
+	<!-- 암호 가져오기 -->
 	<select id="getPW" parameterType="map"
 		resultType="travel77">
-		select * from travel
-		where num=#{num} AND pw=#{pw}
+		SELECT * 
+		FROM travel
+		WHERE num=#{num} AND pw=#{pw}
 	</select>
 	
 	
-	
-	<!-- delete -->
+	<!-- 글 삭제 -->
 	<delete id="travel_deletePro" parameterType="travel77">
-		delete from travel
-		where num=#{num} AND pw=#{pw}
+		DELETE from travel
+		WHERE num=#{num} AND pw=#{pw}
 	</delete>
 </mapper>
