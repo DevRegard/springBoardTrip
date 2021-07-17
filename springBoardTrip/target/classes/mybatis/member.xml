@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="member">
+
   <!-- id중복체크, 회원정보 수정 -->
   <select id="selectOne" parameterType="String" resultType="model.member.MemberDto">
    SELECT * 
@@ -13,29 +14,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   
   <!-- 회원가입 -->
   <insert id="insertMember" parameterType="model.member.MemberDto">
-   insert into member(m_id,m_pw,m_name,m_jumin1,m_jumin2,m_email,m_email2,m_zipcode,m_addr,m_regdate)
-   values(#{m_id},#{m_pw},#{m_name},#{m_jumin1},#{m_jumin2},#{m_email},#{m_email2},#{m_zipcode},#{m_addr},NOW())
+   INSERT into member(m_id,m_pw,m_name,m_jumin1,m_jumin2,m_email,m_email2,m_zipcode,m_addr,m_regdate)
+   VALUES(#{m_id},#{m_pw},#{m_name},#{m_jumin1},#{m_jumin2},#{m_email},#{m_email2},#{m_zipcode},#{m_addr},NOW())
   </insert>
   
   <!-- 로그인,map사용, 'model.member.MemberDto'대신 별칭:'member77'로 사용 -->
   <select id="selectLogin" parameterType="map" resultType="member77">
-   select * 
-   from member
-   where m_id=#{m_id} and m_pw=#{m_pw}
+   SELECT * 
+   FROM member
+   WHERE m_id=#{m_id} and m_pw=#{m_pw}
   </select>
   
   <!-- DB회원정보 수정 -->
   <update id="memberUpdate" parameterType="model.member.MemberDto">
-   update member
-   set m_pw=#{m_pw},m_name=#{m_name},m_jumin1=#{m_jumin1},m_jumin2=#{m_jumin2},m_email=#{m_email},
-   m_email2=#{m_email2},m_zipcode=#{m_zipcode},m_addr=#{m_addr},m_regdate=NOW()
-   where m_id=#{m_id}
+   UPDATE member
+   SET m_pw=#{m_pw},m_name=#{m_name},m_jumin1=#{m_jumin1},m_jumin2=#{m_jumin2},m_email=#{m_email},
+       m_email2=#{m_email2},m_zipcode=#{m_zipcode},m_addr=#{m_addr},m_regdate=NOW()
+   WHERE m_id=#{m_id}
   </update>
   
   <!-- 회원 탈퇴 -->
   <delete id="memberDelete" parameterType="String">
-   delete from member 
-   where m_id=#{m_id}
+   DELETE from member 
+   WHERE m_id=#{m_id}
   </delete>
 
 </mapper>
