@@ -7,78 +7,75 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 글 최대 번호 -->
 	<select id="noticeMaxNum" resultType="Integer">
-		select max(n_num)
-		from t_notice
+		SELECT max(n_num)
+		FROM t_notice
 	</select>
 	
 	
-	
-	<!-- 글 쓰기 (공지사항)-->
+	<!-- 글 쓰기  -->
 	<insert id="writeNotice" parameterType="mnN"> <!-- model.notice.NoticeDTO -->
-		insert into t_notice(user,n_subject,u_pass,wdate,n_content,ip)
-		values(#{user},#{n_subject},#{u_pass},NOW(),#{n_content},#{ip})
+		INSERT INTO t_notice(user,n_subject,u_pass,wdate,n_content,ip)
+		VALUES(#{user},#{n_subject},#{u_pass},NOW(),#{n_content},#{ip})
 	</insert>
 	
 	
-	
-	<!-- 글 갯수 -->
+	<!-- 글 개수 -->
 	<select id="selectCount" resultType="int">
-		select count(*)
-		from t_notice
+		SELECT count(*)
+		FROM t_notice
 	</select>
-	
 	
 	
 	<!-- 리스트 -->
 	<select id="viewNotice" parameterType="java.util.HashMap" resultType="mnN" >
-		select * 
-		from t_notice
-		order by n_num asc
-		limit #{start},#{cnt}
+		SELECT * 
+		FROM t_notice
+		ORDER BY n_num asc
+		LIMIT #{start},#{cnt}
 	</select>
-	
 	
 	
 	<!-- 조회수 증가 -->
 	<update id="noticeReadCount" parameterType="int">
-		update t_notice
-		set n_readcount = n_readcount + 1
-		where n_num=#{n_num}
+		UPDATE t_notice
+		SET n_readcount = n_readcount + 1
+		WHERE n_num=#{n_num}
 	</update>
 	
 	
-	
-	<!-- 글 내용보기  = 글 수정 (JSP보낼것) -->
-	<select id="contentView" parameterType="int" resultType="mnN"> <!-- n_num의 타입은 int 사용, *은 DTO로 결과출력 -->
-		select *
-		from t_notice
-		where n_num=#{n_num}
+	<!-- 글 내용보기  (글수정,글삭제에서도 사용) -->
+	<select id="contentView" parameterType="int" resultType="mnN">
+		SELECT *
+		FROM t_notice
+		WHERE n_num=#{n_num}
 	</select>
-	
+	<!-- 
+		SELECT (resultType) 
+		FROM 테이블
+		WHERE (paramaterType)
+	 -->
 	
 	
 	<!-- 글 수정 (DB 데이터 수정) -->
 	<update id="noticeUpdatePro" parameterType="mnN">
-		update t_notice
-		set user=#{user},n_subject=#{n_subject},n_content=#{n_content}
-		where n_num=#{n_num} AND u_pass=#{u_pass}
+		UPDATE t_notice
+		SET user=#{user},n_subject=#{n_subject},n_content=#{n_content}
+		WHERE n_num=#{n_num} AND u_pass=#{u_pass}
 	</update>
-	
 	
 	
 	<!-- 암호 체크 (수정, 삭제) -->
 	<select id="checkGetPw" parameterType="map" resultType="mnN">
-		select * 
-		from t_notice
-		where n_num=#{n_num} AND u_pass=#{u_pass}
+		SELECT * 
+		FROM t_notice
+		WHERE n_num=#{n_num} AND u_pass=#{u_pass}
 	</select>
-	
 	
 	
 	<!-- 글 삭제 -->
 	<delete id="noticeDelete" parameterType="int">
-		delete from t_notice
-		where n_num=#{n_num}
+		DELETE FROM t_notice
+		WHERE n_num=#{n_num}
 	</delete>
 
 </mapper>

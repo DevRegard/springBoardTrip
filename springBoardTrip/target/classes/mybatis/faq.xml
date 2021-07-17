@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="faq">
+
 	<!-- 최대 글번호 얻기 -->
 	<select id="numMax" resultType="Integer">
 		select max(num) from faq
@@ -27,8 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<!-- 리스트 list -->
-	<select id="selectList" parameterType="java.util.HashMap"
-		resultType="faq77">
+	<select id="selectList" parameterType="java.util.HashMap" resultType="faq77">
 		select * from faq
 		order by num desc
 		limit #{start},#{cnt}
