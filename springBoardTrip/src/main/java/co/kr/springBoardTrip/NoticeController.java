@@ -1,11 +1,11 @@
 package co.kr.springBoardTrip;
 
-import org.springframework.stereotype.Controller; //컨트롤러
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.beans.factory.annotation.Autowired; //자동 Setter 작업
+import org.springframework.beans.factory.annotation.Autowired; //자동 Setter
 import org.apache.ibatis.session.SqlSession; // MyBatis
 import org.springframework.ui.Model;
 
@@ -46,14 +46,14 @@ public class NoticeController {
 	
 	
 	
-	
 	//DB에 글쓰기
+	public static int maxNum = 0;
+	
 	@RequestMapping(value = "noticeWritePro.do", method = RequestMethod.POST)
 	public String noticePlusProc(@ModelAttribute("noticeDto") NoticeDto noticeDto,
 			HttpServletRequest request) throws IOException, NamingException{
 		
 		//최대 글번호
-		int maxNum = 0;
 		if(sqlSession.selectOne("notice.noticeMaxNum") != null) {
 			maxNum = sqlSession.selectOne("notice.noticeMaxNum");
 		}
@@ -155,7 +155,7 @@ public class NoticeController {
 	public String noticeText(Model model, String n_num, String pageNum)
 	throws IOException, NamingException{
 		
-		int numCount = Integer.parseInt(n_num); //*** String을 integer형으로 변환
+		int numCount = Integer.parseInt(n_num); //String을 integer형으로 변환 중요
 		sqlSession.update("notice.noticeReadCount", numCount);
 		
 		NoticeDto noticeDto = sqlSession.selectOne("notice.contentView", numCount); //조회수
@@ -181,7 +181,7 @@ public class NoticeController {
 	throws IOException, NamingException{
 		
 		int num1 = Integer.parseInt(n_num);
-		NoticeDto noticeDto = sqlSession.selectOne("notice.contentView",num1); // XML 글내용보기 ***
+		NoticeDto noticeDto = sqlSession.selectOne("notice.contentView",num1); //글내용보기
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("pageNum", pageNum);
@@ -225,7 +225,7 @@ public class NoticeController {
 		map.put("n_num", n_num);
 		map.put("u_pass", u_pass);
 		
-		NoticeDto noticeDto2 = sqlSession.selectOne("notice.checkGetPw", map); // ***** XML, 글번호와 암호체크 
+		NoticeDto noticeDto2 = sqlSession.selectOne("notice.checkGetPw", map); //글번호와 암호체크 
 		
 		//경우의 수에 따라 메세지 출력 및 뷰 이동
 		if(noticeDto2 == null) {
@@ -233,8 +233,8 @@ public class NoticeController {
 			return ".main.notice.noticeUpdateForm";
 			
 		} else {
-			sqlSession.update("notice.noticeUpdatePro", noticeDto); // ***** XML, 글 수정 
-//			model.addAttribute("msg2","정상적으로 글 수정 완료했습니다. \n 리스트로 돌아갑니다.");
+			sqlSession.update("notice.noticeUpdatePro", noticeDto); //글 수정 
+			model.addAttribute("msg2","정상적으로 글 수정 완료했습니다. \n 리스트로 돌아갑니다.");
 		}//if else end
 		
 		model.addAttribute("noticeDto",noticeDto);
@@ -279,11 +279,11 @@ public class NoticeController {
 		
 		NoticeDto noticeDto3 = sqlSession.selectOne("notice.checkGetPw",map);
 		
-		if(noticeDto3 == null) {
+		if(noticeDto3 == null) { //일치하지 않으면 다시 삭제폼으로
 			model.addAttribute("msg", "삭제 실패 :암호가 서로 일치하지 않습니다.");
-			return ".main.notice.noticeDeleteForm"; //뷰 리턴(일치하지않으면)
-		}else {
-			sqlSession.delete("notice.noticeDelete",noticeDto3); //******* XML 이름 유의
+			return ".main.notice.noticeDeleteForm";
+		}else { //일치하면 삭제
+			sqlSession.delete("notice.noticeDelete", noticeDto3); //******* XML이름 유의 (에러찾기 힘들었음)
 		}
 		
 		model.addAttribute("noticeDto", noticeDto);
