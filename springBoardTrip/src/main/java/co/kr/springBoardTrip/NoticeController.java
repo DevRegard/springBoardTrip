@@ -25,15 +25,20 @@ public class NoticeController {
 	private SqlSession sqlSession; // MyBatis
 	
 	
-	//공지사항 등록 (글 쓰기) ->  noticeWriteForm.jsp
+	//글 쓰기
 	@RequestMapping("/noticeWriteForm.do")
 	public String noticePlusForm(Model model, String n_num){
 		
 		n_num = "0";
 		
-		//View에서 사용할 속성
-		model.addAttribute("n_num", new Integer(n_num)); //Integer()는 null값 처리 가능, 산술연산불가 ===> SQL 작업 적합
-//		model.addAttribute("n_num", n_num); //INT는 null값처리 불가능, 산술연산만 가능
+		model.addAttribute("n_num", new Integer(n_num)); 
+		
+		/* 
+		 * Integer()는 null값 처리 가능, 산술연산불가 ===> SQL 작업 적합
+		 * 
+		 * 자료형 INT는 null값처리 불가능, 산술연산만 가능하므로 아래와 같은 코드는 부적절
+		 * model.addAttribute("n_num", n_num);
+		*/
 		
 		return ".main.notice.noticeWriteForm"; //views/notice/noticeWriteForm.jsp
 	}
@@ -42,14 +47,16 @@ public class NoticeController {
 	
 	
 	
-	//DB에 글쓰기 ->  noticeWritePro.jsp
+	//DB에 글쓰기
 	@RequestMapping(value = "noticeWritePro.do", method = RequestMethod.POST)
 	public String noticePlusProc(@ModelAttribute("noticeDto") NoticeDto noticeDto,
 			HttpServletRequest request) throws IOException, NamingException{
 		
 		//최대 글번호
 		int maxNum = 0;
-		maxNum = sqlSession.selectOne("notice.noticeMaxNum");
+		if(sqlSession.selectOne("notice.noticeMaxNum") != null) {
+			maxNum = sqlSession.selectOne("notice.noticeMaxNum");
+		}
 		
 		//아이피 구하기
 		String ip = request.getRemoteAddr();
@@ -65,43 +72,52 @@ public class NoticeController {
 	
 	
 	
-	//리스트  ->  noticeList.jsp
+	//리스트
 	@RequestMapping("noticeList.do")
 	public String noticeView(Model model, String pageNum)
 		throws IOException, NamingException{
 		
-		if(pageNum == null) {pageNum = "1";}
-		//변수 정리 -> 가독성 향상
-		int pageSize,
-			currentPage,
-			startRow;
+		if(pageNum == null) {pageNum = "1";} //첫번째 글 작성에 대한 에러방지
+		/*
+		 * <리스트 버튼 및 표시 기능 구현>
+		 * 가독성 향상을 위해 변수 구조 및 주석 변경
+		 */
+		int pageSize, //페이지 크기
+			currentPage, //현재 페이지
+			count, //총 글 수 
+			number, //글 번호 역순으로 표시
+			pageBlock, //블럭당 n개 페이지 묶기
+			pageCount, //총 페이지 수
+			startRow, endRow, //페이지 블럭 당 글의 시작과 끝 번호 [이동 버튼]
+			startPage, endPage; //시작과 끝 페이지 [이동 버튼]
 		
 		pageSize = 10;
 		currentPage = Integer.parseInt(pageNum);
-		startRow = (currentPage - 1) * pageSize + 1; //1페이지는 1부터, 2페이지는 11부터, 3페이지는 21부터
-		int endRow = currentPage * pageSize; //1페이지는 10까지, 2페이지는 20까지, 3페이지는 30까지
-		// {startRow} ~ {endRow}
 		
-		int count = 0; //총 글 수 넣기 위해
-		int pageBlock = 10; //블럭당 10개 패이지로 묶기
+		startRow = (currentPage - 1) * pageSize + 1; 
+		// 시작 줄번호 = (현재페이지 - 1) * 페이지크기 + 1
+		endRow = currentPage * pageSize; 			 
+		// 끝 줄번호 = 현재페이지 * 페이지크기
 		
-		count = sqlSession.selectOne("notice.selectCount"); //총 글 수 얻기
-		//selectOne은 XML에서 해당 쿼리수행한것 가져오기 *****
-		
-		int number = count - (currentPage - 1) * pageSize; //글번호를 역순으로 하기
+		pageBlock = 10; //블럭당 10개 패이지로 묶기
+		count = sqlSession.selectOne("notice.selectCount");
+		number = count - (currentPage - 1) * pageSize; 
+		//글번호[역순] = 총글수 - (현재페이지 - 1) * 페이지크기
 		
 		HashMap <String, Integer> map = new HashMap <String, Integer>();
-		map.put("start", startRow - 1); //시작 위치, MySql은 0부터 시작
-		map.put("cnt", pageSize); //글 갯수 ( 10개씩 )
-		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1); //총 페이지 수
-//							    몫				꽁다리 레코드 수
-		int startPage = (currentPage / 10) * 10 + 1; // 시작페이지
-		int endPage = startPage + pageBlock - 1;
+		map.put("start", startRow - 1); //시작 위치, (MySql은 0부터 시작하므로 -1)
+		map.put("cnt", pageSize); //글 갯수
+		
+		pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1); 
+		//총 페이지 수 = 총글수 / 페이지크기 + (총글수 % 페이지크기 == 0 ? 0 : 1)
+		
+		startPage = (currentPage / 10) * 10 + 1; // 시작페이지 = (현재페이지 / 10) * 10 + 1
+		endPage = startPage + pageBlock - 1;	 // 마지막페이지 = 시작페이지 + 블럭당페이지수 - 1
 		
 		
 		List <NoticeDto> list = sqlSession.selectList("notice.viewNotice", map);
-		//selectList("XML쿼리경로",map); *****
 		
+		// addAttribute ("key", value) : JSP에서 ${}을 통해 출력할 데이터 저장
 		model.addAttribute("pageSize",pageSize);
 		model.addAttribute("currentPage",currentPage);
 		
@@ -117,12 +133,14 @@ public class NoticeController {
 		model.addAttribute("startPage",startPage);
 		model.addAttribute("endPage",endPage);
 		
-		model.addAttribute("list",list); //출력할 데이터
+		model.addAttribute("list",list);
 		
-		/* <나중에 추가>
+		/* <추후 추가 - 글 존재 유무에 따른 페이지 출력>
+		 * 
 		 * if(count > 0){//글이 존재하면 noticeList = dao.noticeGetList(startRow, pageSize);
+		 * 
 		 * //dao메서드 호출하고 결과 받는다 }else{//글이 없으면 noticeList = Collections.EMPTY_LIST;
-		 * //비어있는는 뜻 request.setAttribute("noticeList", noticeList);
+		 * //비어있다는 뜻 request.setAttribute("noticeList", noticeList);
 		 */
 		
 		return ".main.notice.noticeList"; //뷰 리턴
@@ -132,14 +150,13 @@ public class NoticeController {
 	
 	
 	
-	//글 내용 보기 + 조회수 증가 ->  noticeContent.jsp
+	//글 내용 보기 + 조회수 증가
 	@RequestMapping("noticeContent.do")
 	public String noticeText(Model model, String n_num, String pageNum)
 	throws IOException, NamingException{
 		
 		int numCount = Integer.parseInt(n_num); //*** String을 integer형으로 변환
 		sqlSession.update("notice.noticeReadCount", numCount);
-		
 		
 		NoticeDto noticeDto = sqlSession.selectOne("notice.contentView", numCount); //조회수
 		
@@ -158,7 +175,7 @@ public class NoticeController {
 	
 	
 	
-	//글 수정 ->  noticeUpdateForm.jsp
+	//글 수정
 	@RequestMapping("noticeUpdateForm.do")
 	public ModelAndView updateForm(String n_num, String pageNum)
 	throws IOException, NamingException{
@@ -179,9 +196,9 @@ public class NoticeController {
 	
 	
 //____________________________________________________________________________________
-	//DB에 글 수정 , noticeUpdatePro.jsp
+	//DB에서 글 수정 <초기 MVC기법>
+	//JSP 별도로 만들고 사용하는 로직 - 수정,삭제
 	
-	//초기 MVC 기법 (pro JSP 별도로 만들고 사용하는 로직) - 수정,삭제
 //	@RequestMapping(value = "noticeUpdatePro.do", method = RequestMethod.POST)
 //	public ModelAndView updatePro(NoticeDto noticeDto, String pageNum)
 //	throws IOException, NamingException{
@@ -199,7 +216,7 @@ public class NoticeController {
 	
 	
 	
-	//Spring MVC -> 경우의 수에 따라 메세지 출력 및 뷰 이동 [DB에 글수정]
+	//DB에서 글수정
 	@RequestMapping(value = "noticeUpdatePro.do", method = RequestMethod.POST)
 	public String noticeUpdatePro(String n_num, String u_pass, Model model, NoticeDto noticeDto, String pageNum)
 	throws IOException, NamingException{
@@ -210,6 +227,7 @@ public class NoticeController {
 		
 		NoticeDto noticeDto2 = sqlSession.selectOne("notice.checkGetPw", map); // ***** XML, 글번호와 암호체크 
 		
+		//경우의 수에 따라 메세지 출력 및 뷰 이동
 		if(noticeDto2 == null) {
 			model.addAttribute("msg", "수정 실패 : 암호가 일치하지 않습니다. \n 암호를 정확히 입력해주세요.");
 			return ".main.notice.noticeUpdateForm";
@@ -229,7 +247,7 @@ public class NoticeController {
 	
 	
 	
-	//글 삭제폼 ->  noticeDeleteForm.jsp
+	//글 삭제
 	@RequestMapping("noticeDeleteForm.do")
 	public ModelAndView noticeDelete(String n_num, String pageNum)
 	throws IOException, NamingException{
@@ -250,8 +268,8 @@ public class NoticeController {
 	
 	
 	
-	//DB에 글 삭제 ->  noticeDeletePro.jsp
-	@RequestMapping(value="noticeDeletePro.do", method=RequestMethod.POST)
+	//DB에서 글 삭제
+	@RequestMapping(value = "noticeDeletePro.do", method = RequestMethod.POST)
 	public String noticeDeletePro(String n_num, String u_pass, Model model, NoticeDto noticeDto, String pageNum)
 	throws IOException, NamingException{
 		
