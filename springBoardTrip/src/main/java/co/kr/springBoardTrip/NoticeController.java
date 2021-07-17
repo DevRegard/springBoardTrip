@@ -80,7 +80,7 @@ public class NoticeController {
 		if(pageNum == null) {pageNum = "1";} //첫번째 글 작성에 대한 에러방지
 		/*
 		 * <리스트 버튼 및 표시 기능 구현>
-		 * 가독성 향상을 위해 변수 구조 및 주석 변경
+		 * 변수 구조 및 주석 변경으로 가독성 개선
 		 */
 		int pageSize, //페이지 크기
 			currentPage, //현재 페이지
@@ -111,29 +111,32 @@ public class NoticeController {
 		pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1); 
 		//총 페이지 수 = 총글수 / 페이지크기 + (총글수 % 페이지크기 == 0 ? 0 : 1)
 		
-		startPage = (currentPage / 10) * 10 + 1; // 시작페이지 = (현재페이지 / 10) * 10 + 1
-		endPage = startPage + pageBlock - 1;	 // 마지막페이지 = 시작페이지 + 블럭당페이지수 - 1
+		startPage = (currentPage / 10) * 10 + 1; 
+		// 시작페이지 = (현재페이지 / 10) * 10 + 1
+		endPage = startPage + pageBlock - 1;	 
+		// 마지막페이지 = 시작페이지 + 블럭당페이지수 - 1
+		
 		
 		
 		List <NoticeDto> list = sqlSession.selectList("notice.viewNotice", map);
 		
 		// addAttribute ("key", value) : JSP에서 ${}을 통해 출력할 데이터 저장
-		model.addAttribute("pageSize",pageSize);
-		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("currentPage", currentPage);
 		
-		model.addAttribute("startRow",startRow);
-		model.addAttribute("endRow",endRow);
+		model.addAttribute("startRow", startRow);
+		model.addAttribute("endRow", endRow);
 		
-		model.addAttribute("count",count);
-		model.addAttribute("pageBlock",pageBlock);
+		model.addAttribute("count", count);
+		model.addAttribute("pageBlock", pageBlock);
 		
-		model.addAttribute("number",number);
-		model.addAttribute("pageCount",pageCount);
+		model.addAttribute("number", number);
+		model.addAttribute("pageCount", pageCount);
 		
-		model.addAttribute("startPage",startPage);
-		model.addAttribute("endPage",endPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
 		
-		model.addAttribute("list",list);
+		model.addAttribute("list", list);
 		
 		/* <추후 추가 - 글 존재 유무에 따른 페이지 출력>
 		 * 
