@@ -252,11 +252,10 @@ public class NoticeController {
 	public ModelAndView noticeDelete(String n_num, String pageNum)
 	throws IOException, NamingException{
 		
-		ModelAndView mv = new ModelAndView(); //코드 가독성을 위해 제일 위에 작성
-		
 		int num1 = Integer.parseInt(n_num);
 		NoticeDto noticeDto = sqlSession.selectOne("contentView", num1); //글내용보기
 		
+		ModelAndView mv = new ModelAndView();
 		mv.addObject("pageNum", pageNum);
 		mv.addObject("noticeDto",noticeDto);
 		mv.setViewName(".main.notice.noticeDeleteForm"); //뷰 이름 등록
