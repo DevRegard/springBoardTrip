@@ -73,7 +73,7 @@ public class MemberController {
 	   String m_addr = request.getParameter("m_addr");
 	   String m_addr2 = request.getParameter("m_addr2");
 	  
-	   memberDto.setM_addr(m_addr+","+m_addr2);
+	   memberDto.setM_addr(m_addr + "," + m_addr2);
       
       sqlSession.insert("member.insertMember",memberDto);
       
