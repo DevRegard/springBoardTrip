@@ -1,4 +1,4 @@
-(추가 예정 : 프로젝트 설명, 프로젝트 사용방법(trip.sql), 서비스 화면, DB 및 Class 다이어그램, 최근 버전 표시(Version.md))
+(추가 예정 : 프로젝트 설명, 프로젝트 사용방법(trip.sql), 서비스 화면, DB 및 Class 다이어그램)
 
 # 프로젝트 소개
 |Project Name|Summary|Dev Staff|Maintenance|
@@ -13,8 +13,3 @@
 
 # 페이지 구성도
 ![image](https://user-images.githubusercontent.com/77965998/125669927-0f578ecc-7edb-4a70-99ac-fe1e2ed026b8.png)
-
-
-왜 지난 프로젝트에 대해 유지보수하는 시간을 가지는가?  
-프로젝트 유지보수의 끝에 관한 기준은 무엇이고, 왜 그렇게 생각하는가?
-이 프로젝트에서 도출할 수 있는 API가 존재하는가? 그에 대한 이유는 무엇인가? 
