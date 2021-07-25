@@ -1,4 +1,4 @@
-(추가 예정 : 프로젝트 설명, 프로젝트 사용방법(trip.sql), 서비스 화면, DB 및 Class 다이어그램)
+(추가 예정 : 프로젝트 설명, 프로젝트 사용방법(trip.sql), 서비스 화면, DB 다이어그램)
 
 # 프로젝트 소개
 |Project Name|Summary|Dev Staff|Maintenance|
