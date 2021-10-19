@@ -1,7 +1,7 @@
 # 프로젝트 개요
 |Project Name|Summary|Dev Staff|Maintenance|
 |------|---|---|---|
-|TRAVEL : 국내외 여행지 정보 제공 사이트|정보 공유 게시판 및 회원관리 프로젝트 기획 및 개발|4|1|
+|TRAVEL : 국내외 여행지 정보 제공 사이트|정보 공유 게시판 및 회원관리 프로그램 개발|4|1|
 
 
 |Dev Environment|Technology Stack|
