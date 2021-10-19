@@ -6,7 +6,7 @@
 
 |Dev Environment|Technology Stack|
 |------|---|
-|STS-3.9.15, Tomcat 8.0, MySQL-5.5.37|Spring MVC, Java 1.8, HTML5, CSS3, JavaScript, JQeury, MySQL5, JSP, Servlet|
+|STS-3.9.15, Tomcat 8.0, MySQL-5.5.37|Spring MVC, Java 1.8, HTML5, CSS3, JavaScript (JQeury), MySQL5, JSP, Servlet|
 
 
 # 페이지 구성도
